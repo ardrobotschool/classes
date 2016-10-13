@@ -9,6 +9,6 @@ char* Medium::getTitle(){
   return title;
 }
 
-int Medium::getYear{
+int Medium::getYear(){
   return year;
 }
