@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Medium.h"
 
-Medium(char* newTitle, int newYear){
+Medium::Medium(char* newTitle, int newYear){
   title = newTitle;
   year = newYear;
 }

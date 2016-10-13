@@ -4,6 +4,7 @@
 using namespace std;
 
 int main(){
-  Medium *medium = new Medium("MyAwesomeTitle", 1996);
+  char title[50] = "MyAwesomeTitle";
+  Medium *medium = new Medium(title, 1996);
   return 0;
 }
