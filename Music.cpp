@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Music.h"
 
-Music::Music(char* newTitle, char* newArtist, int newYear, float newDuration, char* newPublisher) : Medium(newTitle, newYear){
+Music::Music(char* newTitle, char* newArtist, int newYear, int newDuration, char* newPublisher) : Medium(newTitle, newYear){
   publisher = newPublisher;
   duration = newDuration;
   artist = newArtist;

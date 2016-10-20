@@ -3,7 +3,7 @@
 
 class Music : public Medium{
  public:
-  Music(char* title, char* artist, int year, float duration, char* publisher); //Crazy constructor
+  Music(char* title, char* artist, int year, int duration, char* publisher); //Crazy constructor
   char* getPublisher();
   char* getArtist();
   int getDuration();
