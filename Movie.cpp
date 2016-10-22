@@ -7,4 +7,14 @@ Movie::Movie(char* newTitle, char* newDirector, int newYear, int newDuration, in
   rating = newRating;
 }
 
-char* Movie::get
+char* Movie::getDirector(){
+  return director;
+}
+
+int Movie::getDuration(){
+  return duration;
+}
+
+int Movie::getRating(){
+  return rating;
+}
