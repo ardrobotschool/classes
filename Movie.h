@@ -9,6 +9,6 @@ class Movie : public Medium{
   int getRating();
  private:
   char* director;
-  int duration;
+  int duration; //minutes
   int rating;
 };
