@@ -2,11 +2,16 @@
 #include "VideoGame.h"
 #include "Music.h"
 #include "Movie.h"
+#include <vector>
+#include <cctype>
+#include <cstring>
 
 using namespace std;
 
+void add(vector<Medium*> &database);
+
 int main(){
-  char title[50] = "MyAwesomeTitle";
+  /*  char title[50] = "MyAwesomeTitle";
   Medium *medium = new Medium(title, 1996);
   cout << medium -> getTitle() << endl;
 
@@ -24,6 +29,40 @@ int main(){
   char title4[50] = "Star Wars";
   char director[50] = "George Lucas";
   Movie* movie = new Movie(title4, director, 1977, 124, 5);
-  cout << "year:" << movie->getYear() <<" duration: " << movie->getDuration()/60 << ":" << movie->getDuration() %60 << " director: " << movie->getDirector();
+  cout << "year:" << movie->getYear() <<" duration: " << movie->getDuration()/60 << ":" << movie->getDuration() %60 << " director: " << movie->getDirector();*/
+
+  vector<Medium*> database;
+  cout << "You may type in \"ADD,\" \"SEARCH,\" and \"QUIT.\"" << endl;
+
+  while(true){
+    char input[7];
+    cout << "Type in an option: ";
+    cin >> input;
+    cout << endl;
+    //Convert to lower:
+    for(int i = 0; input[i]; i++){
+      input[i] = tolower(input[i]);
+    }
+    if(strcmp(input, "quit") == 0{
+	return 0;
+      }
+    else if(strcmp(input, "add") == 0){
+      add(database);
+    }
+  }
+ 
   return 0;
+}
+
+void add(vector<Medium*> &database){
+  //Prompts user for the media type and the corresponding data; adds the medium to the vector.
+  char input[10];
+  cout << "Enter the medium type (VIDEOGAME, MUSIC, or MOVIE): ";
+  cin >> input;
+  cout << endl;
+  //Convert to lower case.
+  for(int i = 0; input[i]; i++){
+    input[i] = tolower(input[i]);
+  }
+  cout << input << endl;
 }
