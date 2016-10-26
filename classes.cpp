@@ -9,6 +9,7 @@
 using namespace std;
 
 void add(vector<Medium*> &database);
+void search(vector<Medium*> &database);
 
 int main(){
   /*  char title[50] = "MyAwesomeTitle";
@@ -38,16 +39,20 @@ int main(){
     char input[7];
     cout << "Type in an option: ";
     cin >> input;
+    //cin.ignore();
     cout << endl;
     //Convert to lower:
     for(int i = 0; input[i]; i++){
       input[i] = tolower(input[i]);
     }
-    if(strcmp(input, "quit") == 0{
+    if(strcmp(input, "quit") == 0 || strcmp(input, "q") == 0){
 	return 0;
       }
     else if(strcmp(input, "add") == 0){
       add(database);
+    }
+    else if(strcmp(input, "search") == 0){
+      search(database);
     }
   }
  
@@ -59,10 +64,53 @@ void add(vector<Medium*> &database){
   char input[10];
   cout << "Enter the medium type (VIDEOGAME, MUSIC, or MOVIE): ";
   cin >> input;
-  cout << endl;
+  cin.ignore();
+  //cout << endl;
   //Convert to lower case.
   for(int i = 0; input[i]; i++){
     input[i] = tolower(input[i]);
   }
-  cout << input << endl;
+
+  if(strcmp(input, "videogame") == 0){
+    char title[25];
+    int year;
+    char publisher[25];
+    int rating;
+    cout << "Enter the following information of your videogame:" << endl;
+    cout << "Title: ";
+    cin.getline(title, 25);
+    //cout << endl;
+    cout << "Year: ";
+    cin >> year;
+    cin.ignore();
+    //cout << endl;
+    cout << "Publisher: ";
+    cin.getline(publisher, 25);
+    //cout << endl;
+    cout << "Rating: ";
+    cin >> rating;
+    //cout << endl;
+
+    database.push_back(new VideoGame(title, year, publisher, rating));
+  }
+}
+
+void search(vector<Medium*> &database){
+  //Prompts user for title or year and lists matching items.
+  char input;
+  cout << "Would you like to search by title or year? (t/y)" << endl;
+  cin >> input;
+  cout << endl;
+  input = tolower(input);
+  if(input == 'y'){
+    int year;
+    cout << "Enter year: ";
+    cin >> year;
+    cout << endl;
+    for(vector<Medium*>::iterator it = database.begin(); it != database.end(); it++){
+      if((*it)->getYear() == year){
+	cout << (*it)->getTitle();
+      }
+    }
+  }
 }
