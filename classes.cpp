@@ -15,12 +15,12 @@ int main(){
   /*  char title[50] = "MyAwesomeTitle";
   Medium *medium = new Medium(title, 1996);
   cout << medium -> getTitle() << endl;
-
+  */
   char anotherTitle[50] = "Tetris";
   char publisher[50] = "SomePublisher";
   VideoGame* videoGame = new VideoGame(anotherTitle, 1964, publisher, 5);
-  cout << videoGame->getPublisher() << endl;
-
+  //cout << videoGame->getTitle() << endl;
+  /*
   char yetAnotherTitle[50] = "Concerning Hobbits";
   char anotherPublisher[50] = "I don't know.";
   char artist[50] = "Howard Shore";
@@ -34,6 +34,10 @@ int main(){
 
   vector<Medium*> database;
   cout << "You may type in \"ADD,\" \"SEARCH,\" and \"QUIT.\"" << endl;
+  database.push_back(videoGame);
+  for(vector<Medium*>::iterator it = database.begin(); it != database.end(); it++){
+    cout << (*it)->getTitle() << endl;
+  }
 
   while(true){
     char input[7];
@@ -72,9 +76,9 @@ void add(vector<Medium*> &database){
   }
 
   if(strcmp(input, "videogame") == 0){
-    char title[25];
+    char *title = new char[25];
     int year;
-    char publisher[25];
+    char *publisher= new char[25];
     int rating;
     cout << "Enter the following information of your videogame:" << endl;
     cout << "Title: ";
@@ -109,7 +113,7 @@ void search(vector<Medium*> &database){
     cout << endl;
     for(vector<Medium*>::iterator it = database.begin(); it != database.end(); it++){
       if((*it)->getYear() == year){
-	cout << (*it)->getTitle();
+	cout << (*it)->getTitle() << endl;
       }
     }
   }

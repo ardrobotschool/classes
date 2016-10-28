@@ -3,7 +3,7 @@
 
 class Medium{
  public:
-  Medium(char* title, int year); //Constructor
+  Medium(char title[], int year); //Constructor
   char* getTitle();
   int getYear();
  private:
