@@ -15,12 +15,10 @@ int main(){
   /*  char title[50] = "MyAwesomeTitle";
   Medium *medium = new Medium(title, 1996);
   cout << medium -> getTitle() << endl;
-  */
   char anotherTitle[50] = "Tetris";
   char publisher[50] = "SomePublisher";
   VideoGame* videoGame = new VideoGame(anotherTitle, 1964, publisher, 5);
   //cout << videoGame->getTitle() << endl;
-  /*
   char yetAnotherTitle[50] = "Concerning Hobbits";
   char anotherPublisher[50] = "I don't know.";
   char artist[50] = "Howard Shore";
@@ -34,12 +32,8 @@ int main(){
 
   vector<Medium*> database;
   cout << "You may type in \"ADD,\" \"SEARCH,\" and \"QUIT.\"" << endl;
-  database.push_back(videoGame);
-  for(vector<Medium*>::iterator it = database.begin(); it != database.end(); it++){
-    cout << (*it)->getTitle() << endl;
-  }
 
-  while(true){
+  while(true){//Primary loop.
     char input[7];
     cout << "Type in an option: ";
     cin >> input;
@@ -57,6 +51,9 @@ int main(){
     }
     else if(strcmp(input, "search") == 0){
       search(database);
+    }
+    else{
+      cout << "Command not recognized." << endl;
     }
   }
  
@@ -97,6 +94,48 @@ void add(vector<Medium*> &database){
 
     database.push_back(new VideoGame(title, year, publisher, rating));
   }
+  else if(strcmp(input, "music") == 0){
+    //Music* music = new Music(yetAnotherTitle, artist, 2001, 127, anotherPublisher);
+    char *title = new char[25];
+    char *artist = new char[25];
+    char *publisher = new char[25];
+    int year, duration;
+    cout << "Enter the following information:" << endl;
+    cout << "Title: ";
+    cin.getline(title, 25);
+    cout << "Artist: ";
+    cin.getline(artist, 25);
+    cout << "Publisher: ";
+    cin.getline(publisher, 25);
+    cout << "Year: ";
+    cin >> year;
+    cout << "Duration (seconds): ";
+    cin >> duration;
+
+    database.push_back(new Music(title, artist, year, duration, publisher));
+  }
+  else if(strcmp(input, "movie") == 0){
+    //Movie* movie = new Movie(title4, director, 1977, 124, 5);
+    char *title = new char[25];
+    char *director = new char[25];
+    int year, duration, rating;
+    cout << "Enter the following information:" << endl;
+    cout << "Title: ";
+    cin.getline(title, 25);
+    cout << "Director: ";
+    cin.getline(director, 25);
+    cout << "Year: ";
+    cin >> year;
+    cout << "Duration (minutes): ";
+    cin >> duration;
+    cout << "Rating: ";
+    cin >> rating;
+
+    database.push_back(new Movie(title, director, year, duration, rating));
+  }
+  else{
+    cout << "Format not recognized." << endl;
+  }
 }
 
 void search(vector<Medium*> &database){
@@ -104,7 +143,7 @@ void search(vector<Medium*> &database){
   char input;
   cout << "Would you like to search by title or year? (t/y)" << endl;
   cin >> input;
-  cout << endl;
+  //cout << endl;
   input = tolower(input);
   if(input == 'y'){
     int year;
@@ -117,4 +156,22 @@ void search(vector<Medium*> &database){
       }
     }
   }
+  else if(input == 't'){
+    //Search by title.
+    char searchInput[25];
+    cin.ignore();
+    cout << "Enter a (part of a) title." << endl;
+    cin.getline(searchInput, 25);
+    cout << endl;
+    for(vector<Medium*>::iterator it = database.begin(); it != database.end(); it++){
+      if(strstr((*it)->getTitle(), searchInput) != NULL){
+	cout << (*it)->getTitle() << endl;
+      }
+    }
+  }
+  else{
+    cout << "Input not recognized." << endl;
+    return;
+  }
+  cout << endl;
 }
