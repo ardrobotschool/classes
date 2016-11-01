@@ -73,20 +73,20 @@ void add(vector<Medium*> &database){
   }
 
   if(strcmp(input, "videogame") == 0){
-    char *title = new char[25];
+    char *title = new char[128];
     int year;
-    char *publisher= new char[25];
+    char *publisher= new char[128];
     int rating;
     cout << "Enter the following information of your videogame:" << endl;
     cout << "Title: ";
-    cin.getline(title, 25);
+    cin.getline(title, 128);
     //cout << endl;
     cout << "Year: ";
     cin >> year;
     cin.ignore();
     //cout << endl;
     cout << "Publisher: ";
-    cin.getline(publisher, 25);
+    cin.getline(publisher, 128);
     //cout << endl;
     cout << "Rating: ";
     cin >> rating;
@@ -96,17 +96,17 @@ void add(vector<Medium*> &database){
   }
   else if(strcmp(input, "music") == 0){
     //Music* music = new Music(yetAnotherTitle, artist, 2001, 127, anotherPublisher);
-    char *title = new char[25];
-    char *artist = new char[25];
-    char *publisher = new char[25];
+    char *title = new char[128];
+    char *artist = new char[128];
+    char *publisher = new char[128];
     int year, duration;
     cout << "Enter the following information:" << endl;
     cout << "Title: ";
-    cin.getline(title, 25);
+    cin.getline(title, 128);
     cout << "Artist: ";
-    cin.getline(artist, 25);
+    cin.getline(artist, 128);
     cout << "Publisher: ";
-    cin.getline(publisher, 25);
+    cin.getline(publisher, 128);
     cout << "Year: ";
     cin >> year;
     cout << "Duration (seconds): ";
@@ -116,14 +116,14 @@ void add(vector<Medium*> &database){
   }
   else if(strcmp(input, "movie") == 0){
     //Movie* movie = new Movie(title4, director, 1977, 124, 5);
-    char *title = new char[25];
-    char *director = new char[25];
+    char *title = new char[128];
+    char *director = new char[128];
     int year, duration, rating;
     cout << "Enter the following information:" << endl;
     cout << "Title: ";
-    cin.getline(title, 25);
+    cin.getline(title, 128);
     cout << "Director: ";
-    cin.getline(director, 25);
+    cin.getline(director, 128);
     cout << "Year: ";
     cin >> year;
     cout << "Duration (minutes): ";
@@ -158,10 +158,10 @@ void search(vector<Medium*> &database){
   }
   else if(input == 't'){
     //Search by title.
-    char searchInput[25];
+    char searchInput[128];
     cin.ignore();
     cout << "Enter a (part of a) title." << endl;
-    cin.getline(searchInput, 25);
+    cin.getline(searchInput, 128);
     cout << endl;
     for(vector<Medium*>::iterator it = database.begin(); it != database.end(); it++){
       if(strstr((*it)->getTitle(), searchInput) != NULL){
