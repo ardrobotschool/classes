@@ -7,6 +7,10 @@ Movie::Movie(char* newTitle, char* newDirector, int newYear, int newDuration, in
   rating = newRating;
 }
 
+Movie::~Movie(){
+  delete[] director;
+}
+
 char* Movie::getDirector(){
   return director;
 }

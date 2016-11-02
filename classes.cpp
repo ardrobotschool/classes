@@ -44,8 +44,12 @@ int main(){
       input[i] = tolower(input[i]);
     }
     if(strcmp(input, "quit") == 0 || strcmp(input, "q") == 0){
-	return 0;
+      //Deallocate stuff. All of it:
+      for(vector<Medium*>::iterator it = database.begin(); it != database.end(); it++){
+	delete (*it);
       }
+      return 0;
+    }
     else if(strcmp(input, "add") == 0){
       add(database);
     }

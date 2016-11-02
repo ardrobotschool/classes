@@ -6,6 +6,10 @@ VideoGame::VideoGame(char* newTitle, int newYear, char* newPublisher, int newRat
   rating = newRating;
 }
 
+VideoGame::~VideoGame(){
+  delete[] publisher;
+}
+
 char* VideoGame::getPublisher(){
   return publisher;
 }

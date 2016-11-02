@@ -7,6 +7,7 @@ class Movie : public Medium{
   char* getDirector();
   int getDuration();
   int getRating();
+  ~Movie();
  private:
   char* director;
   int duration; //minutes

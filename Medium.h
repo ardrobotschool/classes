@@ -6,6 +6,7 @@ class Medium{
   Medium(char title[], int year); //Constructor
   char* getTitle();
   int getYear();
+  ~Medium();
  private:
   char* title;
   int year;

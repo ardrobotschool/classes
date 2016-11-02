@@ -4,6 +4,7 @@
 class Music : public Medium{
  public:
   Music(char* title, char* artist, int year, int duration, char* publisher); //Crazy constructor
+  ~Music();
   char* getPublisher();
   char* getArtist();
   int getDuration();

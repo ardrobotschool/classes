@@ -4,6 +4,7 @@
 class VideoGame : public Medium{
  public:
   VideoGame(char* newTitle, int newYear, char* newPublisher, int newRating); //Constructor
+  ~VideoGame();
   char* getPublisher();
   int getRating();
  private:
