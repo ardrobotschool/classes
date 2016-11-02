@@ -157,7 +157,7 @@ void search(vector<Medium*> &database){
     int count = 0; //Keep track of entries found as in the title case below.
     for(vector<Medium*>::iterator it = database.begin(); it != database.end(); it++){
       if((*it)->getYear() == year){
-	cout << (*it)->getTitle() << endl;
+	cout << (*it)->getTitle() << " (" << (*it)->getYear() << ")" << endl;
 	count++;
       }
     }
@@ -186,7 +186,7 @@ void search(vector<Medium*> &database){
       }
       
       if(strstr(lowerTitle, searchInput) != NULL){
-	cout << (*it)->getTitle() << endl;
+	cout << (*it)->getTitle() << " (" << (*it)->getYear() << ")" << endl;
 	count++;
       }
     }
