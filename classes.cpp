@@ -154,10 +154,15 @@ void search(vector<Medium*> &database){
     cout << "Enter year: ";
     cin >> year;
     cout << endl;
+    int count = 0; //Keep track of entries found as in the title case below.
     for(vector<Medium*>::iterator it = database.begin(); it != database.end(); it++){
       if((*it)->getYear() == year){
 	cout << (*it)->getTitle() << endl;
+	count++;
       }
+    }
+    if(count == 0){
+      cout << "No matches found." << endl;
     }
   }
   else if(input == 't'){
@@ -167,10 +172,26 @@ void search(vector<Medium*> &database){
     cout << "Enter a (part of a) title." << endl;
     cin.getline(searchInput, 128);
     cout << endl;
+    //Convert input to lower case:
+    for(int i=0; searchInput[i]; i++){
+      searchInput[i] = tolower(searchInput[i]);
+    }
+    int count = 0; //Entries found. We tell the user if we haven't found anything.
     for(vector<Medium*>::iterator it = database.begin(); it != database.end(); it++){
-      if(strstr((*it)->getTitle(), searchInput) != NULL){
-	cout << (*it)->getTitle() << endl;
+      char lowerTitle[128]; //Title to lower case.
+      strcpy(lowerTitle, (*it)->getTitle());
+      //Covert the title to lower:
+      for(int i=0; lowerTitle[i]; i++){
+	lowerTitle[i] = tolower(lowerTitle[i]);
       }
+      
+      if(strstr(lowerTitle, searchInput) != NULL){
+	cout << (*it)->getTitle() << endl;
+	count++;
+      }
+    }
+    if(count == 0){
+      cout << "No matches found." << endl;
     }
   }
   else{
