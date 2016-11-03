@@ -14,12 +14,13 @@ void search(vector<Medium*> &database);
 int main(){
   /*  char title[50] = "MyAwesomeTitle";
   Medium *medium = new Medium(title, 1996);
-  cout << medium -> getTitle() << endl;
-  char anotherTitle[50] = "Tetris";
+  cout << medium -> getTitle() << endl;*/
+  /*char anotherTitle[50] = "Tetris";
   char publisher[50] = "SomePublisher";
-  VideoGame* videoGame = new VideoGame(anotherTitle, 1964, publisher, 5);
+  Medium* videoGame = new VideoGame(anotherTitle, 1964, publisher, 5);
+  videoGame->displayInfo();*/
   //cout << videoGame->getTitle() << endl;
-  char yetAnotherTitle[50] = "Concerning Hobbits";
+  /*char yetAnotherTitle[50] = "Concerning Hobbits";
   char anotherPublisher[50] = "I don't know.";
   char artist[50] = "Howard Shore";
   Music* music = new Music(yetAnotherTitle, artist, 2001, 127, anotherPublisher);
@@ -157,7 +158,8 @@ void search(vector<Medium*> &database){
     int count = 0; //Keep track of entries found as in the title case below.
     for(vector<Medium*>::iterator it = database.begin(); it != database.end(); it++){
       if((*it)->getYear() == year){
-	cout << (*it)->getTitle() << " (" << (*it)->getYear() << ")" << endl;
+	//cout << (*it)->getTitle() << " (" << (*it)->getYear() << ")" << endl;
+	(*it)->displayInfo();
 	count++;
       }
     }
@@ -186,7 +188,8 @@ void search(vector<Medium*> &database){
       }
       
       if(strstr(lowerTitle, searchInput) != NULL){
-	cout << (*it)->getTitle() << " (" << (*it)->getYear() << ")" << endl;
+	//cout << (*it)->getTitle() << " (" << (*it)->getYear() << ")" << endl;
+	(*it)->displayInfo();
 	count++;
       }
     }

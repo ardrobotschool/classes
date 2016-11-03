@@ -15,3 +15,7 @@ char* Medium::getTitle(){
 int Medium::getYear(){
   return year;
 }
+
+void Medium::displayInfo(){
+  return;
+}

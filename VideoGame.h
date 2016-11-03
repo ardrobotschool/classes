@@ -7,6 +7,7 @@ class VideoGame : public Medium{
   ~VideoGame();
   char* getPublisher();
   int getRating();
+  void displayInfo();
  private:
   char* publisher;
   int rating;

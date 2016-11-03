@@ -7,7 +7,8 @@ class Medium{
   char* getTitle();
   int getYear();
   virtual ~Medium();
- private:
+  virtual void displayInfo();
+ protected:
   char* title;
   int year;
 };

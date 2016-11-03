@@ -8,6 +8,7 @@ class Music : public Medium{
   char* getPublisher();
   char* getArtist();
   int getDuration();
+  void displayInfo();
  private:
   char* publisher;
   int duration; //seconds
