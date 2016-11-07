@@ -1,3 +1,8 @@
+/*
+ * A basic program storing a media database.
+ * The user can add video games, music, and movies. There is also a search option.
+ * Completed by Artur Drobot, November 2016.
+ */
 #include <iostream>
 #include "VideoGame.h"
 #include "Music.h"
