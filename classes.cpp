@@ -14,7 +14,7 @@
 using namespace std;
 
 void add(vector<Medium*> &database);
-void search(vector<Medium*> &database);
+vector<Medium*>* search(vector<Medium*> &database);
 
 int main(){
   /*  char title[50] = "MyAwesomeTitle";
@@ -37,7 +37,7 @@ int main(){
   cout << "year:" << movie->getYear() <<" duration: " << movie->getDuration()/60 << ":" << movie->getDuration() %60 << " director: " << movie->getDirector();*/
 
   vector<Medium*> database;
-  cout << "You may type in \"ADD,\" \"SEARCH,\" and \"QUIT.\"" << endl;
+  cout << "You may type in \"ADD,\" \"SEARCH,\" \"DELETE,\" or \"QUIT.\"" << endl;
 
   while(true){//Primary loop.
     char input[7];
@@ -60,7 +60,30 @@ int main(){
       add(database);
     }
     else if(strcmp(input, "search") == 0){
-      search(database);
+      delete search(database); //We do not use the results vector here.
+    }
+    else if(strcmp(input, "delete") == 0){
+      cout << "Find the items you want to delete:" << endl;
+      vector<Medium*>* results = search(database);
+      if(!results->empty()){
+	cout << endl;
+	cout << "Do you want these items? (y/n)" << endl;
+	cin >> input;
+	if(strcmp(input, "y") == 0){
+	  for(vector<Medium*>::iterator it = results->begin(); it != results->end(); it++){
+	    //First delete the Medium out of the database:
+	    for(vector<Medium*>::iterator itData = database.begin(); itData != database.end(); itData++){
+	      if(*itData == *it){
+		database.erase(itData);
+		break;
+	      }
+	    }
+	    //Then deallocate the memory.
+	    delete (*it);
+	  }
+	}
+      }
+      delete results;
     }
     else{
       cout << "Command not recognized." << endl;
@@ -148,8 +171,10 @@ void add(vector<Medium*> &database){
   }
 }
 
-void search(vector<Medium*> &database){
+vector<Medium*>* search(vector<Medium*> &database){
   //Prompts user for title or year and lists matching items.
+  //Returns vector of results found
+  vector<Medium*>* results = new vector<Medium*>;
   char input;
   cout << "Would you like to search by title or year? (t/y)" << endl;
   cin >> input;
@@ -165,6 +190,7 @@ void search(vector<Medium*> &database){
       if((*it)->getYear() == year){
 	//cout << (*it)->getTitle() << " (" << (*it)->getYear() << ")" << endl;
 	(*it)->displayInfo();
+	results->push_back(*it);
 	count++;
       }
     }
@@ -195,6 +221,7 @@ void search(vector<Medium*> &database){
       if(strstr(lowerTitle, searchInput) != NULL){
 	//cout << (*it)->getTitle() << " (" << (*it)->getYear() << ")" << endl;
 	(*it)->displayInfo();
+	results->push_back(*it);
 	count++;
       }
     }
@@ -204,7 +231,7 @@ void search(vector<Medium*> &database){
   }
   else{
     cout << "Input not recognized." << endl;
-    return;
   }
+  return results;
   cout << endl;
 }
